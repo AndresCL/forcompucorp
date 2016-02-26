@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="author" content="Andrés Contreras Leiva">
+	<title>Amazing Weather Web App</title>
+
+	<!-- BOOTSTRAP -->
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+</head>
+<body ng-app="AWWA" ng-controller="weatherController">
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			<!-- Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">Amazing Weather Web App</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+				<form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" ng-focus="location_search_zip=null" ng-model="location_search" class="form-control" placeholder="City,Country Code"> OR
+						<input type="text" ng-focus="location_search=null" ng-model="location_search_zip" class="form-control" placeholder="Zip,Country Code">
+					</div>
+					<button ng-click="prefind()"  type="submit" class="btn btn-success">Search!</button>
+				</form>
+			</div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+	</nav>
+
+	<div id="location_error" style="display:none" class="alert alert-danger" role="alert">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<strong>Wops!</strong> We cannot determine your location. Try searching by Postcode or Country.
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">	
+			<div id="map" style="height:200px;width: 100%"></div>
+			<div class="caption">
+
+				<div class="panel panel-default" style="margin:15px;">
+					<div class="panel-body">
+						<h3>{{result_city}} {{result_weather}}</h3>
+						<p>
+							<i class="fa fa-sun-o fa-2"></i> Temperature  {{result_temp}}ºC  MAX: {{result_temp_max}}ºC MIN: {{result_temp_min}}ºC<br>
+							<i class="fa fa-cloud fa-2"></i> Humidity  {{result_humidity}}%<br>
+
+							<i class="fa fa-cloud-download fa-2"></i> Pressure  {{result_pressure}} hPa<br>
+							
+						</p>
+					</div>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	
+	
+</body>
+
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+<!-- ANGULAR -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+
+<!-- APP -->
+<script src="js/app.js"></script>
+<script src="js/appController.js"></script>
+
+<!-- BOOTSTRAP -->
+<script src="js/bootstrap.min.js"></script>
+
+<!-- Maps API Javascript -->
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+
+</html>
